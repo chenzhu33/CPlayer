@@ -272,7 +272,38 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
                 return true;
             }
         });
+        EditTextPreference hdNetworkCachingPref = (EditTextPreference) findPreference("hd_network_caching");
+        hdNetworkCachingPref.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                final SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(PreferencesActivity.this);
+                SharedPreferences.Editor editor = sharedPrefs.edit();
+                try {
+                    editor.putInt("hd_network_caching_value", Integer.parseInt((String)newValue));
+                } catch(NumberFormatException e) {
+                    editor.putInt("hd_network_caching_value", 0);
+                }
+                editor.commit();
+                return true;
+            }
+        });
+        EditTextPreference hdFileCachingPref = (EditTextPreference) findPreference("hd_file_caching");
+        hdFileCachingPref.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                final SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(PreferencesActivity.this);
+                SharedPreferences.Editor editor = sharedPrefs.edit();
+                try {
+                    editor.putInt("hd_file_caching_value", Integer.parseInt((String)newValue));
+                } catch(NumberFormatException e) {
+                    editor.putInt("hd_file_caching_value", 0);
+                }
+                editor.commit();
+                return true;
+            }
+        });
         /*** SharedPreferences Listener to apply changes ***/
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         sharedPrefs.registerOnSharedPreferenceChangeListener(this);

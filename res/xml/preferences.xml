@@ -136,7 +136,16 @@
                     android:maxLength="5"
                     android:summary="@string/network_caching_summary"
                     android:title="@string/network_caching" />
-
+                <EditTextPreference
+                    android:defaultValue="1500"
+                    android:key="hd_file_caching"
+                    android:maxLength="5"
+                    android:title="@string/hd_file_caching" />
+                <EditTextPreference
+                    android:defaultValue="1500"
+                    android:key="hd_network_caching"
+                    android:maxLength="5"
+                    android:title="@string/hd_network_caching" />
                 <Preference
                     android:enabled="true"
                     android:key="quit_app"

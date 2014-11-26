@@ -812,6 +812,9 @@ public class MainActivity extends ActionBarActivity {
         b.setTitle(R.string.open_mrl_dialog_title);
         b.setMessage(R.string.open_mrl_dialog_msg);
         b.setView(input);
+        input.setText("http://42.62.4.200/1080.flv");
+        input.setText("http://218.29.42.166:8000/live/flv/channel14");
+        
         b.setPositiveButton(R.string.open, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int button) {

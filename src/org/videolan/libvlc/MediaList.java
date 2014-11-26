@@ -197,7 +197,7 @@ public class MediaList {
         return mInternalList.get(position).m.getLocation();
     }
 
-    public String[] getMediaOptions(int position) {
+    public String[] getMediaOptions(int position, int hdFileCache, int hdNetworkCache) {
         boolean noHardwareAcceleration = mLibVLC.getHardwareAcceleration() == 0;
         boolean noVideo = false;
         if (isValid(position))
@@ -218,8 +218,18 @@ public class MediaList {
              * for 320x170 H.264, a few packets less on higher resolutions.
              * On Nexus S, the decoder latency seems to be about 7 packets.
              */
-            options.add(":file-caching=1500");
-            options.add(":network-caching=1500");
+        	String fcacheString;
+        	if(hdFileCache>0 && hdFileCache < 10000)
+        		fcacheString = ":file-caching="+hdFileCache;
+        	else
+        		fcacheString = ":file-caching=1500";
+        	String ncacheString;
+        	if(hdNetworkCache>0 && hdNetworkCache < 10000)
+        		ncacheString = ":network-caching="+hdNetworkCache;
+        	else
+        		ncacheString = ":network-caching=1500";
+            options.add(fcacheString);
+            options.add(ncacheString);
             options.add(":codec=mediacodec,iomx,all");
         }
         if (noVideo)

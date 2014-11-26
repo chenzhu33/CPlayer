@@ -110,6 +110,9 @@ public class VLCInstance {
         instance.setDeblocking(deblocking);
         instance.setNetworkCaching(networkCaching);
         instance.setHardwareAcceleration(hardwareAcceleration);
+        instance.hdFileCache = pref.getInt("hd_file_caching_value", 1500);
+        instance.hdNetworkCache = pref.getInt("hd_network_caching_value", 1500);
+        
     }
 
 

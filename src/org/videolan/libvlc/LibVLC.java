@@ -75,6 +75,9 @@ public class LibVLC {
     private float[] equalizer = null;
     private boolean frameSkip = false;
     private int networkCaching = 0;
+    
+    public int hdFileCache = 1500;
+    public int hdNetworkCache = 1500;
 
     /** Path of application-specific cache */
     private String mCachePath = "";
@@ -453,7 +456,7 @@ public class LibVLC {
         String mrl = mMediaList.getMRL(position);
         if (mrl == null)
             return;
-        String[] options = mMediaList.getMediaOptions(position);
+        String[] options = mMediaList.getMediaOptions(position, hdFileCache, hdNetworkCache);
         mInternalMediaPlayerIndex = position;
         playMRL(mLibVlcInstance, mrl, options);
     }
@@ -465,7 +468,7 @@ public class LibVLC {
      */
     public void playMRL(String mrl) {
         // index=-1 will return options from libvlc instance without relying on MediaList
-        String[] options = mMediaList.getMediaOptions(-1);
+        String[] options = mMediaList.getMediaOptions(-1, hdFileCache, hdNetworkCache);
         mInternalMediaPlayerIndex = 0;
         playMRL(mLibVlcInstance, mrl, options);
     }

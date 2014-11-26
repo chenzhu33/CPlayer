@@ -272,7 +272,11 @@
     <string name="set_locale_popup">Quit and restart VLC for changes to take effect.</string>
     <string name="network_caching">Network caching value</string>
     <string name="network_caching_summary">The amount of time to buffer network media (in ms). Does not work with hardware decoding. Leave blank to reset.</string>
-
+    
+    <string name="hd_network_caching">Hardware Network caching value</string>
+    
+    <string name="hd_file_caching">Hardware File caching value</string>
+    
     <string name="developer_prefs_category">Developer</string>
     <string name="enable_verbose_mode">Verbose</string>
     <string name="enable_verbose_mode_summary">Increase the verbosity (logcat)</string>
